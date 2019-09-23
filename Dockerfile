@@ -26,5 +26,6 @@ RUN apk update && \
     chmod 777 /opt/pdagent/tmp/outqueue/pdq/ && \
     chmod 777 /opt/pdagent/tmp/outqueue/suc/ && \
     chmod 777 /opt/pdagent/tmp/outqueue/tmp/ && \
-    # 增加執行 pdagent 到 docker-entrypoint.sh
-    echo 'su -s /bin/bash -c "/opt/pdagent/bin/pdagentd.py" pdagent' >> /usr/bin/docker-entrypoint.sh
+    echo 'exec su pdagent -s "/bin/bash" -c "/opt/pdagent/bin/pdagentd.py"' >> /usr/bin/docker-entrypoint.sh
+
+ENTRYPOINT ["/sbin/tini", "--", "/usr/bin/docker-entrypoint.sh"]
