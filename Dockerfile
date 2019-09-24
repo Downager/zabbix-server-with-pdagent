@@ -26,7 +26,7 @@ RUN apk update && \
     chmod 777 /opt/pdagent/tmp/outqueue/pdq/ && \
     chmod 777 /opt/pdagent/tmp/outqueue/suc/ && \
     chmod 777 /opt/pdagent/tmp/outqueue/tmp/ && \
+    # 在 docker-entrypoint.sh 內新增一行執行 pdagentd.py
     sed -i '/Starting Zabbix server/asu -s /bin/bash -c "/opt/pdagent/bin/pdagentd.py" pdagent' /usr/bin/docker-entrypoint.sh && \
-    grep pdagentd /usr/bin/docker-entrypoint.sh && \
     # 刪除 pdagentd.pid
     rm /opt/pdagent/tmp/pdagentd.pid
