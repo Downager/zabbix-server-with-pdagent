@@ -30,3 +30,4 @@ RUN apk update && \
     sed -i '/Starting Zabbix server/asu -s /bin/bash -c "/opt/pdagent/bin/pdagentd.py" pdagent' /usr/bin/docker-entrypoint.sh && \
     # 刪除 pdagentd.pid
     rm /opt/pdagent/tmp/pdagentd.pid
+
