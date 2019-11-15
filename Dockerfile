@@ -1,4 +1,5 @@
 FROM zabbix/zabbix-server-mysql:alpine-4.2-latest
+USER root
 RUN apk update && \
     apk add bc curl openssl git python2 python && \
     umask 0022 && \
